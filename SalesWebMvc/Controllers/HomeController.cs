@@ -15,7 +15,7 @@ namespace SalesWebMvc2.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult About()//executa uma ação e retorna um resultado
         {
             ViewData["Message"] = "Salles Web MVC App from C# Course.";
             ViewData["Professor"] = "Nelio Alves";

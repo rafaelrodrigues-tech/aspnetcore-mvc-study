@@ -11,10 +11,10 @@ namespace SalesWebMvc2.Models
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public double BaseSalary { get; set; }
-        public Department Department { get; set; }
-        public int DepartmentId { get; set; }
+        public Department Department { get; set; }//este vendendor pertence a um departamento,também Serve para acessar os dados completos do departamento
+        public int DepartmentId { get; set; }//serve  para identificar qual departamento o vendedor pertence.
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
-
+        //Este vendedor possui várias vendas associadas a ele
         public Seller()
         {
         }

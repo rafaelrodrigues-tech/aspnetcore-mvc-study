@@ -7,18 +7,19 @@ namespace SalesWebMvc2.Controllers
 {
     public class SellersController : Controller
     {
-        private readonly SellerService _sellerService;
+        private readonly SellerService _sellerService;//readonly>  essa variavel "_sellerService" só vai receber uma vez 
         private readonly DepartmentService _departmentService;
         public SellersController(SellerService sellerService,DepartmentService departmentService)
         {
             _sellerService = sellerService;
             _departmentService = departmentService;
         }
-        public IActionResult Index()
+        public IActionResult Index()//responde uma rota
         {
             var list = _sellerService.FindAll();
             return View(list);
         }
+        // GET: Seller/Create
         public IActionResult Create()
         {
             var departments = _departmentService.FindAll();
@@ -51,6 +52,20 @@ namespace SalesWebMvc2.Controllers
         {
             _sellerService.Remove(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
         }
     }
 }
